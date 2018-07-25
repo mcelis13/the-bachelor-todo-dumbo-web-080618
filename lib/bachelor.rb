@@ -100,5 +100,4 @@ def get_average_age_for_season(data, season)
 
   range = sum_of_ages / ages.size.to_f
   range.ceil
-  binding.pry
 end
