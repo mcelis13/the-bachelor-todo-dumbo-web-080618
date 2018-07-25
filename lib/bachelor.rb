@@ -25,7 +25,19 @@ end# end of function
 
 
 def get_contestant_name(data, occupation)
-  # code here
+
+  data.each do |seasonName, seasonData|
+        seasonData.each do |arrayOfHashes|
+           keys = arrayOfHashes.keys
+           keys.each do |key|
+             if key == 'occupation'
+               if arrayOfHashes[key] == occupation
+                 return arrayOfHashes['name']
+               end
+             end
+           end
+        end # end of seasonData loop
+  end # end of data loop
 end
 
 def count_contestants_by_hometown(data, hometown)
