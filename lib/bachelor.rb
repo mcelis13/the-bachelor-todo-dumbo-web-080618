@@ -41,13 +41,63 @@ def get_contestant_name(data, occupation)
 end
 
 def count_contestants_by_hometown(data, hometown)
-  # code here
+  counter = 0
+
+  data.each do |seasonName, seasonData|
+        seasonData.each do |arrayOfHashes|
+           keys = arrayOfHashes.keys
+           keys.each do |key|
+             if key == 'hometown'
+               if arrayOfHashes[key] == hometown
+                 counter += 1
+               end
+             end
+           end
+        end # end of seasonData loop
+  end # end of data loop
+
+counter
 end
 
 def get_occupation(data, hometown)
-  # code here
+
+  data.each do |seasonName, seasonData|
+        seasonData.each do |arrayOfHashes|
+           keys = arrayOfHashes.keys
+           keys.each do |key|
+             if key == 'hometown'
+               if arrayOfHashes[key] == hometown
+                 return arrayOfHashes['occupation']
+               end
+             end
+           end
+        end # end of seasonData loop
+  end # end of data loop
+
 end
 
 def get_average_age_for_season(data, season)
-  # code here
+  ages = []
+  sum_of_ages = 0
+
+  data.each do |seasonName, seasonData|
+    if seasonName == season
+        seasonData.each do |arrayOfHashes|
+           keys = arrayOfHashes.keys
+           keys.each do |key|
+             if key == 'age'
+                 ages << arrayOfHashes[key]
+             end
+           end
+        end # end of seasonData loop
+    end # end of if loop checking for season name
+  end # end of data loop
+
+  #summing ages using a for loop could also you .each
+  for index in ages do
+    sum_of_ages += index.to_f
+  end
+
+  range = sum_of_ages / ages.size.to_f
+  binding.pry
 end
